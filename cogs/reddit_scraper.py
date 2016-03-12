@@ -26,11 +26,11 @@ class RedditScraper:
             await self.bot.say('Number of posts must be no greater than 25.')
             return
         if subreddit.strip():
-            if category in scraper.categories:
+            if category in scraper.reddit_categories:
                 result = await scraper.get_subreddit_top(self.bot.session, subreddit, posts, category)
                 await self.bot.say('\n\n'.join(result))
             else:
-                await self.bot.say('Category must be valid: ' + ', '.join(scraper.categories))
+                await self.bot.say('Category must be valid: ' + ', '.join(scraper.reddit_categories))
         else:
             await self.bot.pm_help(ctx)
 
